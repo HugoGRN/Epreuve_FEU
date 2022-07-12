@@ -8,8 +8,8 @@ def file_to_array(file_name)
 end
 
 def complete_sudoku(file)
-    remplacement = []
-    while file[0].include?('.')
+    remplacement, i = [], 0
+    until i == 8
         liste = ("1".."9").map { |nb| nb }
         file.map.with_index do |ligne, x|
             ligne.map.with_index do |colonne, i|
@@ -32,6 +32,7 @@ def complete_sudoku(file)
                 end
             end
         end
+        i += 1
     end
     file.map { |line| line.join('') }
 end
