@@ -9,7 +9,7 @@ def file_to_array(file_name)
     cat = File.readlines(file_name).map { |line| line.chomp.split('') }
 end
 
-def find_obstacles(array)
+def find_obstacles(array)                                       # Récupere les coordonnées des obstacles dans loc
     loc = []
     array.map.with_index do |line, x|
         line.each_index do |y|
@@ -20,7 +20,7 @@ def find_obstacles(array)
     loc
 end
 
-def sort_obstacles(array)
+def sort_obstacles(array)                                       # Trie le tableau loc ligne par ligne
     a = 0
     array.map.with_index do |tab, x|
         tab.each_index do |y|
@@ -37,7 +37,7 @@ def sort_obstacles(array)
     array
 end
 
-def range_free(array, array2)
+def range_free(array, array2)                                                                                   # Creer des range ou il n'y a pas d'obstacles
     array.map { |ligne| ligne.insert(0, [ligne[0], ligne[1]]) ; ligne.delete_at(1) ; ligne.delete_at(1) }
     a = []
     array.map.with_index do |tab, x|
@@ -60,7 +60,7 @@ def range_free(array, array2)
     a = a.uniq
 end
 
-def big_square(array, array2)
+def big_square(array, array2)                                   # Test si les range peuvent former un carré
     loc_square, square, a = [], [], 0
     array.map do |loc|
         if loc[1].size < 8
@@ -81,7 +81,7 @@ def big_square(array, array2)
     square
 end
 
-def show_square(array, infos_array, array2)
+def show_square(array, infos_array, array2)                     # Recup le plus grand carré et change les points par des o
     carre = []
     array.map { |line| line.delete_if { |tab| tab.size <= 1 } }
     array.map.with_index do |line, x|
