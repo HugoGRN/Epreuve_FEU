@@ -2,7 +2,6 @@
 
 
 # My function
-
 def file_to_array(file_name)
     cat = File.readlines(file_name).map { |line| line.chomp.split('') }
 end
